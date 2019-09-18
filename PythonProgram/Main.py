@@ -445,3 +445,48 @@ var = 5
 change(var)
 print(var)
 print(change(var))
+
+
+
+
+
+def F(var):
+    if(var == 0):
+        return;
+    print(var)
+    F(var - 1)
+
+
+
+import Header
+import os
+
+def Main():
+
+    Header.recursion(10)
+    print(Header.GetNum())
+
+    if "nih" == 'nih':
+        print("nih")
+
+    while True:
+        str = input("请输入：")
+        print(str)
+        if str == "exit":
+            exit(0)
+        elif str == "cls":
+            os.system("cls")
+        elif str == "clear":
+            os.system("cls")
+        elif str == "ipconfig":
+            os.system("ipconfig")
+        elif str == "ls" or str == "ll" or str == "dir":
+            os.system("dir")
+        else:
+            os.system(str)
+            
+
+    return;
+###########################################################
+
+Main();

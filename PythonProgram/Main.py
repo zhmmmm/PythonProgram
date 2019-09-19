@@ -463,30 +463,182 @@ import os
 
 def Main():
 
-    Header.recursion(10)
-    print(Header.GetNum())
+    #Header.recursion(10)
+    #print(Header.GetNum())
 
-    if "nih" == 'nih':
-        print("nih")
+    #if "nih" == 'nih':
+    #    print("nih")
 
-    while True:
-        str = input("请输入：")
-        print(str)
-        if str == "exit":
-            exit(0)
-        elif str == "cls":
-            os.system("cls")
-        elif str == "clear":
-            os.system("cls")
-        elif str == "ipconfig":
-            os.system("ipconfig")
-        elif str == "ls" or str == "ll" or str == "dir":
-            os.system("dir")
-        else:
-            os.system(str)
+    #while True:
+    #    str = input("请输入：")
+    #    print(str)
+    #    if str == "exit":
+    #        exit(0)
+    #    elif str == "cls":
+    #        os.system("cls")
+    #    elif str == "clear":
+    #        os.system("cls")
+    #    elif str == "ipconfig":
+    #        os.system("ipconfig")
+    #    elif str == "ls" or str == "ll" or str == "dir":
+    #        os.system("dir")
+    #    else:
+    #        os.system(str)
+
+
+
+
+    #############################文件
+
+    file = open("py.txt","w+")
+    print("文件名: ", file.name)
+    print("是否已关闭 : ", file.closed)
+    print("访问模式 : ", file.mode)
+    #print("末尾是否强制加空格 : ",file.softspace)
+    file.writelines("你好,python 文件")
+    file.write("你好,python 文件")
+    print("当前文件位置为:"+str(file.tell()))
+    file.seek(0,0)
+    print(file.read(100))
+
+    file.close()
+
+    #os.remove(file_name)
+    #os.rename(current_file_name, new_file_name)
+    #os.mkdir("newdir")
+    #os.rmdir('dirname')
+    #可以用chdir()方法来改变当前的目录。chdir()方法需要的一个参数是你想设成当前目录的目录名称。
+    os.chdir("newdir")
+    print("当前的工作目录 "+os.getcwd())
+
+    # 将当前目录改为"/home/newdir"
+    #os.chdir("/home/newdir")
+
+
+    #############################################异常捕获
+    try:
+        fh = open("testfile", "w")
+        fh.write("这是一个测试文件，用于测试异常!!")
+    except IOError:
+        print("Error: 没有找到文件或读取文件失败")
+    else:
+        print("内容写入文件成功")
+        fh.close()
+
             
 
     return;
 ###########################################################
 
 Main();
+
+######################################################文件
+#t	文本模式 (默认)。
+#x	写模式，新建一个文件，如果该文件已存在则会报错。
+#b	二进制模式。
+#+	打开一个文件进行更新(可读可写)。
+#U	通用换行模式（不推荐）。
+#r	以只读方式打开文件。文件的指针将会放在文件的开头。这是默认模式。
+#rb	以二进制格式打开一个文件用于只读。文件指针将会放在文件的开头。这是默认模式。一般用于非文本文件如图片等。
+#r+	打开一个文件用于读写。文件指针将会放在文件的开头。
+#rb+	以二进制格式打开一个文件用于读写。文件指针将会放在文件的开头。一般用于非文本文件如图片等。
+#w	打开一个文件只用于写入。如果该文件已存在则打开文件，并从开头开始编辑，即原有内容会被删除。如果该文件不存在，创建新文件。
+#wb	以二进制格式打开一个文件只用于写入。如果该文件已存在则打开文件，并从开头开始编辑，即原有内容会被删除。如果该文件不存在，创建新文件。一般用于非文本文件如图片等。
+#w+	打开一个文件用于读写。如果该文件已存在则打开文件，并从开头开始编辑，即原有内容会被删除。如果该文件不存在，创建新文件。
+#wb+	以二进制格式打开一个文件用于读写。如果该文件已存在则打开文件，并从开头开始编辑，即原有内容会被删除。如果该文件不存在，创建新文件。一般用于非文本文件如图片等。
+#a	打开一个文件用于追加。如果该文件已存在，文件指针将会放在文件的结尾。也就是说，新的内容将会被写入到已有内容之后。如果该文件不存在，创建新文件进行写入。
+#ab	以二进制格式打开一个文件用于追加。如果该文件已存在，文件指针将会放在文件的结尾。也就是说，新的内容将会被写入到已有内容之后。如果该文件不存在，创建新文件进行写入。
+#a+	打开一个文件用于读写。如果该文件已存在，文件指针将会放在文件的结尾。文件打开时会是追加模式。如果该文件不存在，创建新文件用于读写。
+#ab+	以二进制格式打开一个文件用于追加。如果该文件已存在，文件指针将会放在文件的结尾。如果该文件不存在，创建新文件用于读写
+
+
+#序号	方法及描述
+#1	
+#file.close()
+#关闭文件。关闭后文件不能再进行读写操作。
+#2	
+#file.flush()
+#刷新文件内部缓冲，直接把内部缓冲区的数据立刻写入文件, 而不是被动的等待输出缓冲区写入。
+#3	
+#file.fileno()
+#返回一个整型的文件描述符(file descriptor FD 整型), 可以用在如os模块的read方法等一些底层操作上。
+#4	
+#file.isatty()
+#如果文件连接到一个终端设备返回 True，否则返回 False。
+#5	
+#file.next()
+#返回文件下一行。
+#6	
+#file.read([size])
+#从文件读取指定的字节数，如果未给定或为负则读取所有。
+#7	
+#file.readline([size])
+#读取整行，包括 "\n" 字符。
+#8	
+#file.readlines([sizeint])
+#读取所有行并返回列表，若给定sizeint>0，则是设置一次读多少字节，这是为了减轻读取压力。
+#9	
+#file.seek(offset[, whence])
+#设置文件当前位置
+#10	
+#file.tell()
+#返回文件当前位置。
+#11	
+#file.truncate([size])
+#截取文件，截取的字节通过size指定，默认为当前文件位置。
+#12	
+#file.write(str)
+#将字符串写入文件，返回的是写入的字符长度。
+#13	
+#file.writelines(sequence)
+#向文件写入一个序列字符串列表，如果需要换行则要自己加入每行的换行符
+
+
+
+#异常名称	描述
+#BaseException	所有异常的基类
+#SystemExit	解释器请求退出
+#KeyboardInterrupt	用户中断执行(通常是输入^C)
+#Exception	常规错误的基类
+#StopIteration	迭代器没有更多的值
+#GeneratorExit	生成器(generator)发生异常来通知退出
+#StandardError	所有的内建标准异常的基类
+#ArithmeticError	所有数值计算错误的基类
+#FloatingPointError	浮点计算错误
+#OverflowError	数值运算超出最大限制
+#ZeroDivisionError	除(或取模)零 (所有数据类型)
+#AssertionError	断言语句失败
+#AttributeError	对象没有这个属性
+#EOFError	没有内建输入,到达EOF 标记
+#EnvironmentError	操作系统错误的基类
+#IOError	输入/输出操作失败
+#OSError	操作系统错误
+#WindowsError	系统调用失败
+#ImportError	导入模块/对象失败
+#LookupError	无效数据查询的基类
+#IndexError	序列中没有此索引(index)
+#KeyError	映射中没有这个键
+#MemoryError	内存溢出错误(对于Python 解释器不是致命的)
+#NameError	未声明/初始化对象 (没有属性)
+#UnboundLocalError	访问未初始化的本地变量
+#ReferenceError	弱引用(Weak reference)试图访问已经垃圾回收了的对象
+#RuntimeError	一般的运行时错误
+#NotImplementedError	尚未实现的方法
+#SyntaxError	Python 语法错误
+#IndentationError	缩进错误
+#TabError	Tab 和空格混用
+#SystemError	一般的解释器系统错误
+#TypeError	对类型无效的操作
+#ValueError	传入无效的参数
+#UnicodeError	Unicode 相关的错误
+#UnicodeDecodeError	Unicode 解码时的错误
+#UnicodeEncodeError	Unicode 编码时错误
+#UnicodeTranslateError	Unicode 转换时错误
+#Warning	警告的基类
+#DeprecationWarning	关于被弃用的特征的警告
+#FutureWarning	关于构造将来语义会有改变的警告
+#OverflowWarning	旧的关于自动提升为长整型(long)的警告
+#PendingDeprecationWarning	关于特性将会被废弃的警告
+#RuntimeWarning	可疑的运行时行为(runtime behavior)的警告
+#SyntaxWarning	可疑的语法的警告
+#UserWarning	用户代码生成的警告

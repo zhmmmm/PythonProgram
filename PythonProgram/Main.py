@@ -461,7 +461,158 @@ def F(var):
 import Header
 import os
 
+
+def fopen(fileName,Mode):
+    try:
+        file = open(fileName,Mode)
+    except IOError:
+        print("Error: 没有找到文件或读取文件失败")
+    else:
+        return file
+def fclose(file):
+    file.close()
+
+class Student:
+    age = 0
+    name = "name"
+    #构造函数
+    def __init__(self):
+        print("Student 无参构造函数调用")
+    def __init__(self,age,name):
+        self.age = age
+        self.name = name
+        print("有参构造函数调用")
+    def __init__(self,age = 0,name = "默认"):
+         self.age = age
+         self.name = name
+         print("有参构造函数调用")
+    def getName(self):
+        return self.name
+    def setName(self,name):
+        self.name = name
+    def __del__(self):
+        print("析构函数调用")
+    #obj = Student(18,"浩曼")
+    #print(obj.getName())
+    #obj.setName("希特勒")
+    #print(obj.getName())
+    #obj = Student()
+    #print(obj.getName())
+    #obj = C()
+    #print(obj.getName())
+    #print(C.__name__)
+    #print(C.__module__)
+class C:
+    name = "12345"
+    def __init__(self):
+        print("C 无参构造函数调用")
+    def getName(self):
+        print(self.name)
+
+class Parent:
+    def __init__(self):
+        print("Parent 构造")
+    def __del__(self):
+        print("Parent 析构")
+    name = "Parent"
+    def SetName(self,name):
+        self.name = name
+    def GetName(self):
+        return self.name
+class Child(Parent):
+    m_age = 0
+    ID = 10086
+    #加连根下划线为私有成员
+    __m_ID = 144564
+    def __init__(self):
+        print("Child 构造" + " 私有成员 " + str(self.__m_ID))
+    def __del__(self):
+        print("Child 析构")
+    def GetClassName(self):
+        return self.__name__
+    def SetName(self,name = "默认 Parent"):
+        self.name = name
+    def SetName(self,name = "默认 重载",age = 0):
+        self.name = name
+        self.m_age = age;
+    def __add__(self,than):
+        self.name += than.name
+        self.age += than.age
+
+
+import threading
+
+list = [0,0,0,0,0,0,0,0,0,0,0,0]
+class myThread(threading.Thread):
+    def __init__(self,threadId,name,counter):
+        threading.Thread.__init__(self)
+        self.threadId = threadId
+        self.name = name
+        self.counter = counter
+    def run(self):
+        print ("开始线程:",self.name)
+        # 获得锁，成功获得锁定后返回 True
+        # 可选的timeout参数不填时将一直阻塞直到获得锁定
+        # 否则超时后将返回 False
+        threadLock.acquire()
+        print_time(self.name,self.counter,list.__len__())
+        # 释放锁
+        threadLock.release()
+    def __del__(self):
+        print (self.name,"线程结束！")
+def print_time(threadName,delay,counter):
+    while counter:
+        time.sleep(delay)
+        list[counter-1] += 1
+        print("[%s] %s 修改第 %d 个值，修改后值为:%d" % (time.ctime(time.time()),threadName,counter,list[counter-1]))
+        counter -= 1
+#threadLock = threading.Lock()
+#threads = []
+## 创建新线程
+#thread1 = myThread(1,"Thread-1",1)
+#thread2 = myThread(2,"Thread-2",2)
+## 开启新线程
+#thread1.start()
+#thread2.start()
+## 添加线程到线程列表
+#threads.append(thread1)
+#threads.append(thread2)
+## 等待所有线程完成
+#for t in threads:
+#    t.join()
+#print ("主进程结束！")
+
+def PT(tName,delay):
+    count = 0
+    #while count < 5:
+    while True:
+        print(count)
+        print("%s: %s" % ( tName, time.ctime(time.time()) ))
+        count += 1;
+        os.system("cls")
+
+
+import sys
+sys.path.append("h")
+import te
+
 def Main():
+
+    obj = Child()
+    obj.SetName()
+    print(obj.GetName())
+    obj.SetName("fuck",17)
+    print(obj.GetName())
+    print(obj.ID)
+    #访问私有属性并更改
+    obj._Child__m_ID = 100
+    print(obj._Child__m_ID)
+    
+    thread = threading.Thread(target = PT,args = ("fds",0))
+    thread.start()
+
+    te.tes()
+
 
     #Header.recursion(10)
     #print(Header.GetNum())
@@ -490,42 +641,41 @@ def Main():
 
     #############################文件
 
-    file = open("py.txt","w+")
-    print("文件名: ", file.name)
-    print("是否已关闭 : ", file.closed)
-    print("访问模式 : ", file.mode)
-    #print("末尾是否强制加空格 : ",file.softspace)
-    file.writelines("你好,python 文件")
-    file.write("你好,python 文件")
-    print("当前文件位置为:"+str(file.tell()))
-    file.seek(0,0)
-    print(file.read(100))
+    #file = open("py.txt","w+")
+    #print("文件名: ", file.name)
+    #print("是否已关闭 : ", file.closed)
+    #print("访问模式 : ", file.mode)
+    ##print("末尾是否强制加空格 : ",file.softspace)
+    #file.writelines("你好,python 文件")
+    #file.write("你好,python 文件")
+    #print("当前文件位置为:"+str(file.tell()))
+    #file.seek(0,0)
+    #print(file.read(100))
 
-    file.close()
+    #file.close()
 
     #os.remove(file_name)
     #os.rename(current_file_name, new_file_name)
     #os.mkdir("newdir")
     #os.rmdir('dirname')
     #可以用chdir()方法来改变当前的目录。chdir()方法需要的一个参数是你想设成当前目录的目录名称。
-    os.chdir("newdir")
-    print("当前的工作目录 "+os.getcwd())
+    #os.chdir("newdir")
+    #print("当前的工作目录 "+os.getcwd())
 
     # 将当前目录改为"/home/newdir"
     #os.chdir("/home/newdir")
 
 
     #############################################异常捕获
-    try:
-        fh = open("testfile", "w")
-        fh.write("这是一个测试文件，用于测试异常!!")
-    except IOError:
-        print("Error: 没有找到文件或读取文件失败")
-    else:
-        print("内容写入文件成功")
-        fh.close()
+    #try:
+    #    fh = open("testfile", "w")
+    #    fh.write("这是一个测试文件，用于测试异常!!")
+    #except IOError:
+    #    print("Error: 没有找到文件或读取文件失败")
+    #else:
+    #    print("内容写入文件成功")
+    #    fh.close()
 
-            
 
     return;
 ###########################################################

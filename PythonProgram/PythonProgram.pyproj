@@ -24,7 +24,11 @@
     <Compile Include="Header.py">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="h\te.py" />
     <Compile Include="Main.py" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="h\" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Python Tools\Microsoft.PythonTools.targets" />
   <!-- Uncomment the CoreCompile target to enable the Build command in

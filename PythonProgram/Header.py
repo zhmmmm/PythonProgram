@@ -11,3 +11,11 @@ def recursion(var):
 
 def GetNum():
     return 10086
+
+#import requests
+
+url = "https://www.bilibili.com/video/av55350377?from=search&seid=13783158102611648125"
+
+def Main():
+    #text = requests.get(url).text
+    pass

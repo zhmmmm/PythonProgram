@@ -608,11 +608,12 @@ def Main():
     obj._Child__m_ID = 100
     print(obj._Child__m_ID)
     
-    thread = threading.Thread(target = PT,args = ("fds",0))
-    thread.start()
+    #thread = threading.Thread(target = PT,args = ("fds",0))
+    #thread.start()
 
-    te.tes()
+    #te.tes()
 
+    Header.Main()
 
     #Header.recursion(10)
     #print(Header.GetNum())

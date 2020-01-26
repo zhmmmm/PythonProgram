@@ -109,14 +109,14 @@ if __name__ == "__main__":
     #imgurl = re.findall('<img .*?/>',html)
 
     url = "http://2019eee.xyz/?m=pic_list*25*"
-    j = 1
+    j = 3
     count = 0
-    #下载两页
-    while j < 2:
+    #下载页gif
+    while j < 100:
         url = url + str(j)
         response = requests.get(url,headers = headers)
         imgurl = re.findall('<a class="stui-vodlist__thumb lazyload" .*?>',response.text)
-        image = "image/image"
+        image = "image/image_0"
         for i in imgurl:
             time.sleep(1)
             img,types = getImgUrl(i)

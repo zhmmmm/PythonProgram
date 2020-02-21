@@ -79,7 +79,9 @@ def getImgUrl(url):
 def saveImgUrl(filename,url):
     header = {
         #qq游览器请求头
-            #'User-Agent':'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.26 Safari/537.36 Core/1.63.6788.400 QQBrowser/10.3.2843.400'
+            #'User-Agent':'Mozilla/5.0 (Windows NT 10.0; WOW64)
+            #AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.26
+            #Safari/537.36 Core/1.63.6788.400 QQBrowser/10.3.2843.400'
         #谷歌游览器请求头
             'user-agent': 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/74.0.3729.169 Safari/537.36'
         }
@@ -87,7 +89,7 @@ def saveImgUrl(filename,url):
     file = open(filename,"wb")
     file.write(ret.content)
     file.close()
-    print("ok")
+    print("save image ok !!!")
 
 if __name__ == "__main__":
 
@@ -97,10 +99,13 @@ if __name__ == "__main__":
     url = "http://2019eee.xyz/?m=pic_list*25*3"
     headers = {
         #qq游览器请求头
-            #'User-Agent':'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.26 Safari/537.36 Core/1.63.6788.400 QQBrowser/10.3.2843.400'
+            #'User-Agent':'Mozilla/5.0 (Windows NT 10.0; WOW64)
+            #AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.26
+            #Safari/537.36 Core/1.63.6788.400 QQBrowser/10.3.2843.400'
         #谷歌游览器请求头
-            #'user-agent': 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/74.0.3729.169 Safari/537.36'
-            'user-agent':'Mozilla/5.0 (Windows; U; Windows NT 5.1; it; rv:1.8.1.11) Gecko/20071127 Firefox/2.0.0.11'
+            'user-agent': 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/74.0.3729.169 Safari/537.36'
+            #'user-agent':'Mozilla/5.0 (Windows; U; Windows NT 5.1; it;
+            #rv:1.8.1.11) Gecko/20071127 Firefox/2.0.0.11'
         }
     response = requests.get(url,headers = headers)
 
@@ -108,30 +113,29 @@ if __name__ == "__main__":
     #response.encoding = response.apparent_encoding
     #imgurl = re.findall('<img .*?/>',html)
 
-    url = "http://2019eee.xyz/?m=pic_list*25*"
-    j = 3
+
+    url = "https://www.meituri.com/a/31310/"
+    #索引
+    j = 1
+    #数量
     count = 0
-    #下载页gif
-    while j < 100:
-        url = url + str(j)
+    #页
+    page = 10
+    while j < page + 1:
+        if(j == 2):
+            url = url + str(j) + ".html"
         response = requests.get(url,headers = headers)
-        imgurl = re.findall('<a class="stui-vodlist__thumb lazyload" .*?>',response.text)
-        image = "image/image_0"
+        response.encoding = response.apparent_encoding
+        print(response.text)
+        imgurl = re.findall('<img src=".*?" alt=".*?">',response.text)
+        print(imgurl)
+        image = "D:\Material/PornImage/yeji559/2/image_0"
         for i in imgurl:
             time.sleep(1)
             img,types = getImgUrl(i)
-            saveImgUrl(image + str(count) + "."+ types,img)
+            saveImgUrl(image + str(count) + "." + types,img)
             count = count + 1
         j = j + 1
-
-    #imgurl = re.findall('<a class="stui-vodlist__thumb lazyload" .*?>',response.text)
-    #image = "image/image"
-    #count = 0
-    #for i in imgurl:
-    #    time.sleep(1)
-    #    img,types = getImgUrl(i)
-    #    saveImgUrl(image + str(count) + "."+ types,img)
-    #    count = count + 1
 
 
 

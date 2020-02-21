@@ -4,7 +4,7 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>2e0d2646-164b-4f2a-8ca9-c4a3cd99535f</ProjectGuid>
     <ProjectHome>.</ProjectHome>
-    <StartupFile>main/Reptile.py</StartupFile>
+    <StartupFile>ReptileAgg\ReptileAgg.py</StartupFile>
     <SearchPath>
     </SearchPath>
     <WorkingDirectory>.</WorkingDirectory>
@@ -31,10 +31,14 @@
     <Compile Include="main\Reptile.py">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="ReptileAgg\ReptileAgg.py">
+      <SubType>Code</SubType>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="h\" />
     <Folder Include="main\" />
+    <Folder Include="ReptileAgg\" />
   </ItemGroup>
   <ItemGroup>
     <InterpreterReference Include="Global|PythonCore|2.7" />

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="zh_CN">
+<head>
+  <meta charset="UTF-8">
+  <title>请输入验证码</title>
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1, user-scalable=0, maximum-scale=1, minimum-scale=1">
+  <script src="/static/js/aall.js"></script>
+</head>
+<body style="text-align: center; margin: 0;">
+<h2 style="margin-bottom: 4px;">检查通过后才可浏览</h2>
+<h2 style="margin: 4px 0;">请输入本站备用网址</h2>
+<h2 style="margin-top: 4px; color: red; font-family: arial,sans-serif;">9tttcc.com</h2>
+<form method="GET">
+  <input name="ccc" style="border: solid black 1px; font-size: 110%">
+  <button style="border: solid black 1px; font-size: 110%">提交检查</button>
+</form>
+<p style="margin-bottom: 4px; font-family: arial,sans-serif;">帮助: 在上面输入 9tttcc.com ,点击'提交检查'按钮,即可通过检查</p>
+<p style="margin-top: 4px;">提示: 网址经常被屏蔽,请多记几个网址备用</p>
+<script>
+  displayCaptchaAds()
+</script>
+</body>
+</html>
